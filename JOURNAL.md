@@ -6,7 +6,7 @@
   ==================================================================
 -->
 
-## 10/22/2025 - Origin of Idea  
+## 10/22/2025 9 AM - Origin of Idea  
 
 For around a year now, I've had the idea to build some sort of device to repel cats from my front lawn. In my neighborhood, there are people who let their cats simply roam around, so there often ends up being cat on the lawn. Of course, something like motion-activated sprinklers are a thing, but where's the fun in that? An idea that I've had in the back of my mind was to create a turret-like device to detect cats using some sort of AI image recognition and spray some water at them to make them not poop on the lawn.
 After finding out about Blueprint, this seemed like the perfect opportunity to finally design this, where I would able to potentially get funding for the parts needed. While looking at AI datasets and methods for cat detection, I came across animal datasets that are traditionally used for the classification of wildlife captured on wildlife cameras. I figured that since I was already planning to build a setup that was essentially like a wildlife camera, why not give it that capability?!
@@ -15,4 +15,31 @@ After finding out about Blueprint, this seemed like the perfect opportunity to f
 
 Cat picture for your enjoyment
   
+
+## 10/22/2025 10 AM - The Plan  
+
+**Note that every effort possible will be made to ensure that cats/other animals are not harmed, just discouraged from pooping on the lawn. I love animals and don't want to hurt them; This project is not meant to do that.**
+
+General Capabilities/Features
+Should be able to:
+- Mechanism placed on a turret base capable of moving in all directions
+- Have two cameras, one for day and one for night
+- Night vision
+- Motion detection of some sort to only turn the camera on when needed, saving battery
+- Options for direct and battery power
+- Store photos locally
+- Water gun feature
+- Ability to classify animals in real time
+
+It would be cool if it:
+- Solar-powered to make it self-sustaining or at the very least extend the battery life
+- Water/weatherproof
+- Detect humans ;)
+- Automatically upload photos to another computer through wifi
+- It could point towards cats
+- Some sort of algorithm to only target cats on the lawn
+- Image processing can be done locally on the device instead of an external computer
+
+![cat2.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDQ4OSwicHVyIjoiYmxvYl9pZCJ9fQ==--bdd590a47b55e489bbfbb230271b12b6b4004447/cat2.jpg)
+Another cat picture  
 
