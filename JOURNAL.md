@@ -43,3 +43,38 @@ It would be cool if it:
 ![cat2.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDQ4OSwicHVyIjoiYmxvYl9pZCJ9fQ==--bdd590a47b55e489bbfbb230271b12b6b4004447/cat2.jpg)
 Another cat picture  
 
+## 10/22/2025 1 PM - Research  
+
+Now that the initial ideas are done, I've been researching a lot since I'm new to a lot of this stuff-electronics in general, CADding something from scratch in Onshape, working with Raspberry Pis/Arduinos, etc.
+Some stuff I came across:
+Turret inspirations
+[This super cool 3d-printed watergun turret](https://makerworld.com/en/models/1409374-remote-controlled-water-turret?from=search#profileId-1462873)
+![turret1.gif](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDQ5NSwicHVyIjoiYmxvYl9pZCJ9fQ==--6be2d50b3045c33f9c60a96692a5c8e3c4256bb5/turret1.gif)
+
+[A remake of the turret from Mark Rober's Hack Pack](https://makerworld.com/en/models/1321679-ir-turret-crunchlabs-io1-ver?from=search#profileId-1358024)
+![turret1.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDQ5OCwicHVyIjoiYmxvYl9pZCJ9fQ==--f201eeac2063cb605c3b49e32bc77f16dd466813/turret1.jpg)
+
+[Mini ball turret for model B-17](https://www.thingiverse.com/thing:2229968)
+![b17turrets.JPG](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDUwNSwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5c4b55fec18a53030c1e11c586a84e647e8c7f/b17turrets.JPG)
+
+Animal Classification
+I plan to use [MegaDetector](https://github.com/agentmorris/MegaDetector), a model trained on camera trap images and already in use by many organizations that track animals, so it should be perfect for the job. However, it only recognizes animals, and classification will be done by [CameraTrapAI](https://github.com/google/cameratrapai), AI models trained specifically for camera traps.
+
+Hardware
+- Servos will be used for the turret motion
+- Processing will likely done with a Raspberry Pi, unless an Orange Pi is necessary for the image processing
+- I already have an Arduino at home, so I'll see if I can maybe integrate that into the design
+
+Resources I found for trail/trap cameras with a Raspberry Pi:
+[https://pestpunch.com/raspberry-pi-pest-camera-trap/](https://pestpunch.com/raspberry-pi-pest-camera-trap/)
+[https://projects-raspberry.com/trail-camera/](https://projects-raspberry.com/trail-camera/)
+[https://projects-raspberry.com/whats-destroying-my-yard-pest-detection-with-raspberry-pi/](https://projects-raspberry.com/whats-destroying-my-yard-pest-detection-with-raspberry-pi/)
+
+![f4408ae59bc76f809d049fcc92cbea80.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDUzNCwicHVyIjoiYmxvYl9pZCJ9fQ==--fb79eec90c7ef4cb6b23be45b51c6a99f29ed5c7/f4408ae59bc76f809d049fcc92cbea80.jpg)
+
+_Yet another cat picture :)_
+
+
+
+  
+
