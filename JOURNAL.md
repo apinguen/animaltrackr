@@ -97,3 +97,19 @@ As of right now, it seems that using two cameras, one with IR and one without mi
 ฅ^•ﻌ•^ฅ
   
 
+## 10/23/2025 - More hardware research  
+
+So apparently it's a pain to connect two cameras to a Pi Zero.
+![RPI_MultiCAM-1-600x600.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDYzNywicHVyIjoiYmxvYl9pZCJ9fQ==--723e7e9a364b9a125909bc631482e3f877cc7e3e/RPI_MultiCAM-1-600x600.jpg)
+This thing, to connect 4 cameras (the two camera one was discontinued), is almost $60. Yay.
+
+Originally I was planning to get another Pi Zero and use that, but the cost of everything is adding up to a lot, and I went back to one of the other ideas I had - using a NOIR camera with an IR filter that can be toggled on and off. Eventually I was able to find a camera with a motorized IR cut filter for a reasonable amount.
+
+This is my first time doing a full scale hardware project, so it took me a while to figure out things that might be considered simple, like how to go about controlling a servo with a Pi. Initially I thought things like a servo controller to run servos, but then I learned that you can just connect it directly. It's that simple.
+
+I also happened to have a motion sensor at home, so I'll be implementing that to conserve battery life.
+The next step is to get initial CAD done, and while I have worked with Onshape before, I only have around a beginner level experience, so it'll definitely be a learning experience.
+
+![cat2.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDc5NSwicHVyIjoiYmxvYl9pZCJ9fQ==--06383aaa0c89cedb370b96c59a119c56d09f57fa/cat2.jpg)
+meow.  
+
