@@ -78,3 +78,22 @@ _Yet another cat picture :)_
 
   
 
+## 10/22/2025 7 PM - Going down the rabbit hole of hardware  
+
+It's been certainly a journey looking through what hardware to use...
+With some research/consulting AI, it seems feasible to use a Pi Zero for the main processing, which is also a lot cheaper than the alternative of a full Pi. Though there will be some latency for the processing, a few seconds to identify the animal should be quick enough.
+
+For the water spraying function, I looked over many different pumps and sprayers to find a cheap option. Interestingly, the water gun kit that Bambu Labs sells was relatively cheap compared to other options, and its reliability can be confirmed online, as opposed to sketchy ones on Ali Express. It also beats having to buy a full water gun and then disassemble it. The kit, for only 10.99, also comes with a battery so I don't have to run it on the Pi's power.
+
+Cameras
+A lot of resources online used the Raspberry Pi AI Camera, which can essentially run detection models on the camera itself, so the Pi itself doesn't have to do that work. It's just a litteee pricey at upwards of $70 a unit.
+I then looked into the normal Pi Camera Module 3s, which seemed more budget friendly while promising the high quality needed for the capture and detection of animals. After a while of searching and reading Reddit about how IR filters work with cameras, if I was to have both night and day animal detecting capabilities, those wouldn't work.
+Arducams were another option I considered, with motorized IR-CUT filters to automatically switch between day and night modes, but they lacked the quality needed for MegaDetector, in addition to the lack of many other essential features like autofocus. A similar option was available through PiHut, but again, it lacked the capabilities required.
+As of right now, it seems that using two cameras, one with IR and one without might work the best.
+![5659-03.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDYxMSwicHVyIjoiYmxvYl9pZCJ9fQ==--4211aeb3aa7812d3c9ed39d51e5296cf85c3c748/5659-03.jpg)
+
+
+![R.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDYxMiwicHVyIjoiYmxvYl9pZCJ9fQ==--7effeb7d6cae0e544d40e633b2fcabe5ea72a7f3/R.jpg)
+ฅ^•ﻌ•^ฅ
+  
+
