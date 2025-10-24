@@ -97,7 +97,7 @@ As of right now, it seems that using two cameras, one with IR and one without mi
 ฅ^•ﻌ•^ฅ
   
 
-## 10/23/2025 - More hardware research  
+## 10/23/2025 7 AM - More hardware research  
 
 So apparently it's a pain to connect two cameras to a Pi Zero.
 ![RPI_MultiCAM-1-600x600.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDYzNywicHVyIjoiYmxvYl9pZCJ9fQ==--723e7e9a364b9a125909bc631482e3f877cc7e3e/RPI_MultiCAM-1-600x600.jpg)
@@ -112,4 +112,16 @@ The next step is to get initial CAD done, and while I have worked with Onshape b
 
 ![cat2.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDc5NSwicHVyIjoiYmxvYl9pZCJ9fQ==--06383aaa0c89cedb370b96c59a119c56d09f57fa/cat2.jpg)
 meow.  
+
+## 10/23/2025 5 PM - Starting CAD!  
+
+I started with CADding the base of the turret. It should theoretically be simple and quick, since it's mostly just a box, but that's assuming you have experience CADding, which I do not.
+It took me about 1.5 hours of struggling and Google to achieve this result:
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDkzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--7cd309dc1ef6937ac047e677fc27cf3c14a10460/image.png)
+It won't win any awards, but it looks okay I guess.
+After trying to figure out the best way to integrate the hardware into the design, it seems like keeping everything in the moving part (turret) will be the easiest way to avoid wiring issues and somewhat waterproof the whole design. I found this cool turntable off of Printables that I'll be using for inspiration.
+[nerf_turntable_2023-jun-09_05-43-46am-000_customizedview15298840655_png.webp](/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDkzMywicHVyIjoiYmxvYl9pZCJ9fQ==--70ac56885d3ed6875d84b85fb0fd6e17631aeff9/nerf_turntable_2023-jun-09_05-43-46am-000_customizedview15298840655_png.webp)
+
+![cute-funny-cat-pictures-qxhcq8gb7pac7vna.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDkzNiwicHVyIjoiYmxvYl9pZCJ9fQ==--e5fb8bf9e1734990643450ff877b9371fbed9144/cute-funny-cat-pictures-qxhcq8gb7pac7vna.jpg)
+  
 
