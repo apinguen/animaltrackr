@@ -125,3 +125,15 @@ After trying to figure out the best way to integrate the hardware into the desig
 ![cute-funny-cat-pictures-qxhcq8gb7pac7vna.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDkzNiwicHVyIjoiYmxvYl9pZCJ9fQ==--e5fb8bf9e1734990643450ff877b9371fbed9144/cute-funny-cat-pictures-qxhcq8gb7pac7vna.jpg)
   
 
+## 10/24/2025 - Working on the turn table  
+
+I'd like to say the CAD went smoothly from earlier, but sad to say, it did not. It took me a while to manage all the different layers of features and modifiers until I came upon this:
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTMxOSwicHVyIjoiYmxvYl9pZCJ9fQ==--7e5d84ae67715dd75745ebb4db36745195eb6a1f/image.png)
+The ridge is for the ball bearings I'll be putting in the final product.
+I don't know why it took me so long, it probably shouldn't have, but it did.
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTMyMCwicHVyIjoiYmxvYl9pZCJ9fQ==--e52027b31ad702eba8ce650ca0d41f20ecf8f6fa/image.png)
+
+![seal.jpg](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTMyNCwicHVyIjoiYmxvYl9pZCJ9fQ==--50847c58ca2ac048fbfcee491367c4fafc305a8f/seal.jpg)
+Seal pic this time
+  
+
