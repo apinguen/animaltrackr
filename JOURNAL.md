@@ -137,7 +137,7 @@ I don't know why it took me so long, it probably shouldn't have, but it did.
 Seal pic this time
   
 
-## 10/25/2025 - Almost done with turntable  
+## 10/25/2025 8 PM - Almost done with turntable  
 
 Worked on turntable.
 Learned a lot about mates in the process
@@ -148,4 +148,12 @@ Next step is to finally finish the servo mount and start working on mounting eve
 
 ![1](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTYxNywicHVyIjoiYmxvYl9pZCJ9fQ==--dc611365e88ab11ce6168ed8da11e44c9b7843a4/1.jpg)
 This CAD thing is so much more time-consuming than I thought it'd be...  
+
+## 10/25/2025 10 PM - Spinny gear!!  
+
+![2025-10-25 22-21-18(1)](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTYyOCwicHVyIjoiYmxvYl9pZCJ9fQ==--ceca24b44acc2342a2a7d27213fbec1bb0d74064/2025-10-25%2022-21-18(1).gif) 
+That took too long
+A bunch of mate shenanigans and research
+Two revolute mates on the turn table -> base and gear -> turn table
+Gear relation between them  
 
