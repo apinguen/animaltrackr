@@ -147,5 +147,5 @@ Next step is to finally finish the servo mount and start working on mounting eve
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTYxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--d6d29334a05f58e2ad01274cfed6a29a944893b6/image.png)
 
 ![1](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NTYxNywicHVyIjoiYmxvYl9pZCJ9fQ==--dc611365e88ab11ce6168ed8da11e44c9b7843a4/1.jpg)
-  
+This CAD thing is so much more time-consuming than I thought it'd be...  
 
