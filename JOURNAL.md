@@ -157,3 +157,14 @@ A bunch of mate shenanigans and research
 Two revolute mates on the turn table -> base and gear -> turn table
 Gear relation between them  
 
+## 11/3/2025 - Working on Turret  
+
+Some progress on the turret!
+Mostly just getting a layout of the components and getting everything fitting together. I'll be using a large stationary inner gear with a bearing in the middle and a smaller servo gear (attached to moving part) for the up and down motion of the turret.
+
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODIwMywicHVyIjoiYmxvYl9pZCJ9fQ==--15478c88e423570fd4198ccb9f18cc52754af0f2/image.png)
+
+![elephant](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODIwNCwicHVyIjoiYmxvYl9pZCJ9fQ==--2071f4008767805d288693b90fe8945b65c67505/elephant.jpg)
+  
+
