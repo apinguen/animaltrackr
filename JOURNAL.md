@@ -168,3 +168,32 @@ Mostly just getting a layout of the components and getting everything fitting to
 ![elephant](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODIwNCwicHVyIjoiYmxvYl9pZCJ9fQ==--2071f4008767805d288693b90fe8945b65c67505/elephant.jpg)
   
 
+## 11/5/2025 - Starting to get closer to the end of CAD (hopefully?)  
+
+Struggling with the use command to copy dimensions of stuff onto sketches.
+Eventually found a super cool featurescript to do a similar thing.
+
+Random problems with constraints that I have no idea why happen
+
+### Other random problems I ran into:
+- You'll see that between this entry and the last, the gear side of the turret is different-this was because I mixed up the two sides and yeah..
+- The pivot point needed to be moved up 3 cm in order to have a full range of motion... which was painful
+- I realized that the whole design was about 4x too big, especially for a 3d printer, so I scaled everything down by that, which came with a whole bunch of other problems and a lot of manually changing dimensions since it didn't seem like there was another good alternative
+
+### The CAD is coming along.. it looks like something now.
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODgyMywicHVyIjoiYmxvYl9pZCJ9fQ==--ed9974745cdbab0e5aa6894b78f48eb72dad1fc1/image.png)
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODgyNCwicHVyIjoiYmxvYl9pZCJ9fQ==--4d3270a9fa4df45db258ac50f270172ffddfd50e/image.png)
+
+I've mostly just been getting everything to fit together - encasing the water squirter and camera, getting a pi mount, etc.
+Stuff I still need to add:
+- IR lights for night vision
+- Some kind of switch to have some control over the turret/its power supply
+- LEDs for feedback would be cool; I also have a small LCD screen that I can maybe use??
+- *Aesthetics*
+
+After that I'll write some base code, and then the project should be ready to ship
+
+## Lesson of the day: fillets are amazing and make every edge look better (most of the time :) )!!
+![maxresdefault](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODgyNSwicHVyIjoiYmxvYl9pZCJ9fQ==--feee58b6b065bcc45cbbb6f1049671c1f1c8934d/maxresdefault.jpg)
+cats also like fillets  
+
