@@ -197,3 +197,10 @@ After that I'll write some base code, and then the project should be ready to sh
 ![maxresdefault](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODgyNSwicHVyIjoiYmxvYl9pZCJ9fQ==--feee58b6b065bcc45cbbb6f1049671c1f1c8934d/maxresdefault.jpg)
 cats also like fillets  
 
+## 11/7/2025 - Lofts  
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTMwNywicHVyIjoiYmxvYl9pZCJ9fQ==--d557969ee36027c6fdbc2bc5b658639e678aad0c/image.png)
+I have finally found a use for the loft feature in my project 
+Also kinda convoluted wiring tunnel/passage/whatever you call it, but we'll see if it actually works later
+The hours I've spent working on the project since the last entry will be added in the next journal entry  
+
