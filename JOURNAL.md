@@ -197,10 +197,23 @@ After that I'll write some base code, and then the project should be ready to sh
 ![maxresdefault](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODgyNSwicHVyIjoiYmxvYl9pZCJ9fQ==--feee58b6b065bcc45cbbb6f1049671c1f1c8934d/maxresdefault.jpg)
 cats also like fillets  
 
-## 11/7/2025 - Lofts  
+## 11/7/2025 8 PM - Lofts  
 
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTMwNywicHVyIjoiYmxvYl9pZCJ9fQ==--d557969ee36027c6fdbc2bc5b658639e678aad0c/image.png)
 I have finally found a use for the loft feature in my project 
 Also kinda convoluted wiring tunnel/passage/whatever you call it, but we'll see if it actually works later
 The hours I've spent working on the project since the last entry will be added in the next journal entry  
+
+## 11/7/2025 10 PM - Motion Sensor and IR Lights  
+
+As you can see in the last entry I added on a mount for a PIR motion sensor. It's a bit exposed but I'm planning to cover it with plastic wrap (some people on the SmartThings forums said it was a good and budget friendly idea) for weather protection.
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTMyMywicHVyIjoiYmxvYl9pZCJ9fQ==--d402dfd34e507fa905a34d8288b53ae24a593e03/image.png)
+For some reason it took me an hour to add this. Again, my Onshape skills are not great.
+
+I also discovered that the sketch of my base was a bit off so I had to work through a bunch of constraint problems trying to fix that.
+
+It turns out there's more than just slapping on a board of IR lights for the night vision; It took a while to find one with the right specifications, optimal wavelength, etc to use. After that, I just need to mount an LCD screen somewhere, add some LEDs to the turret, and some switches. Should be easy.........
+
+![OIP](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTMyNSwicHVyIjoiYmxvYl9pZCJ9fQ==--8dea6da3a6689a8aaa66391f71be39d7d5c2855e/OIP.jpg)
+stuff of nightmares  
 
