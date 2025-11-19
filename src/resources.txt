@@ -1,0 +1,20 @@
+Resources for using hardware/Pi stuff in general
+
+LED
+https://www.instructables.com/Raspberry-Pi-Tutorial-How-to-Use-a-RGB-LED/
+https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-with-your-raspberry-pis-gpio-pins
+
+Servo
+https://www.learnrobotics.org/blog/raspberry-pi-servo-motor/
+
+Buttons/Switches
+https://projects-raspberry.com/how-to-set-up-buttons-and-switches-on-the-raspberry-pi/
+
+Joystick
+https://newbiely.com/tutorials/raspberry-pi/raspberry-pi-joystick
+
+PIR Motion Sensor
+https://randomnerdtutorials.com/raspberry-pi-detect-motion-pir-python/
+
+Stuff to install
+python3 -m pip install gpiozero
