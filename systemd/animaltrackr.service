@@ -1,0 +1,17 @@
+[Unit]
+Description=AnimalTrackr wildlife turret
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/animaltrackr
+EnvironmentFile=-/etc/animaltrackr.env
+ExecStart=/home/pi/animaltrackr/.venv/bin/python src/main.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

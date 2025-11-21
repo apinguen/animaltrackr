@@ -16,5 +16,24 @@ https://newbiely.com/tutorials/raspberry-pi/raspberry-pi-joystick
 PIR Motion Sensor
 https://randomnerdtutorials.com/raspberry-pi-detect-motion-pir-python/
 
+LCD
+https://docs.sunfounder.com/projects/umsk/en/latest/05_raspberry_pi/pi_lesson26_lcd.html
+
 Stuff to install
 python3 -m pip install gpiozero
+
+sudo apt install python3-opencv python3-picamera2
+
+# On Pi (bash)
+sudo apt update
+sudo apt install -y python3-venv python3-pip i2c-tools libatlas-base-dev
+# enable camera & i2c via raspi-config (or use raspi-config non-interactively)
+# Create venv
+python3 -m venv ~/.venvs/animaltrackr
+source ~/.venvs/animaltrackr/bin/activate
+pip install --upgrade pip
+pip install opencv-python-headless tflite-runtime gpiozero adafruit-circuitpython-servokit picamera2
+# If using PCA9685 and adafruit library:
+pip install adafruit-circuitpython-servokit
+# If using Coral USB:
+# follow Coral instructions to install Edge TPU runtime and tflite runtime with edgetpu support

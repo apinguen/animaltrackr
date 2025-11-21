@@ -11,52 +11,104 @@ from __future__ import annotations
 
 import os
 from typing import Tuple
+from enum import Enum, auto
 
-# Hardware pins (GPIO numbering)
-PIR_PIN: int = 
-LED_R_PIN: int = 
-LED_G_PIN: int =
-LED_B_PIN: int =
+def _env_int(name: str, default: int) -> int:
+    val = os.getenv(name)
+    return int(val) if val is not None else default
 
-SWITCH_ONE_PIN: int = 
-SWITCH_TWO_PIN: int = 
+class Mode(Enum):
+    TUNING = auto()
+    DEFAULT = auto()
+    PICTURE = auto()
+    TURRET = auto()
+    PICTURE_FIRE = auto()
 
-BUTTON_ONE_PIN: int = 
-BUTTON_TWO_PIN: int = 
+class State(Enum):
+    IDLE = auto()
+    TRACKING = auto()
+    FIRING = auto()
 
-JOYSTICK_VRX_PIN: int = 
-JOYSTICK_VRY_PIN: int = 
-JOYSTICK_SW_PIN: int = 
+MODE = Mode.TUNING
 
-LCD_D4_PIN: int = 
-LCD_D5_PIN: int = 
-LCD_D6_PIN: int = 
-LCD_D7_PIN: int = 
-LCD_E_PIN: int = 
-LCD_RS_PIN: int = 
+# GPIO.BOARD numbering (matches Hardware._setup_outputs)
+PIR_PIN: int = _env_int("PIR_PIN", 7)
+LED_R_PIN: int = _env_int("LED_R_PIN", 15)
+LED_G_PIN: int = _env_int("LED_G_PIN", 16)
+LED_B_PIN: int = _env_int("LED_B_PIN", 18)
 
-GUN_PUMP_PIN: int = 
-GUN_SHOOT_PIN: int = 
+SWITCH_ONE_PIN: int = _env_int("SWITCH_ONE_PIN", 29)
+SWITCH_TWO_PIN: int = _env_int("SWITCH_TWO_PIN", 31)
 
-# Reminder for me brain: Side to side
-YAW_SERVO_PIN: int =
-# Reminder for me brain: Up and down
-PITCH_SERVO_PIN: int =
+BUTTON_ONE_PIN: int = _env_int("BUTTON_ONE_PIN", 32)
+BUTTON_TWO_PIN: int = _env_int("BUTTON_TWO_PIN", 33)
 
-# Timing
-servoWaitTime: float = 0.5  # seconds to wait for servo to reach position
+JOYSTICK_VRX_PIN: int = _env_int("JOYSTICK_VRX_PIN", 36)
+JOYSTICK_VRY_PIN: int = _env_int("JOYSTICK_VRY_PIN", 37)
+JOYSTICK_SW_PIN: int = _env_int("JOYSTICK_SW_PIN", 38)
 
-# Camera defaults
-DEFAULT_CAMERA_RESOLUTION: Tuple[int, int] = (1280, 720)
+LCD_D4_PIN: int = _env_int("LCD_D4_PIN", 22)
+LCD_D5_PIN: int = _env_int("LCD_D5_PIN", 23)
+LCD_D6_PIN: int = _env_int("LCD_D6_PIN", 24)
+LCD_D7_PIN: int = _env_int("LCD_D7_PIN", 25)
+LCD_E_PIN: int = _env_int("LCD_E_PIN", 26)
+LCD_RS_PIN: int = _env_int("LCD_RS_PIN", 27)
 
-# Paths (derived from repository layout)
+GUN_PUMP_PIN: int = _env_int("GUN_PUMP_PIN", 35)
+GUN_SHOOT_PIN: int = _env_int("GUN_SHOOT_PIN", 40)
+
+YAW_SERVO_PIN: int = _env_int("YAW_SERVO_PIN", 11)
+PITCH_SERVO_PIN: int = _env_int("PITCH_SERVO_PIN", 13)
+
+SERVO_WAIT_TIME: float = float(os.getenv("SERVO_WAIT_TIME", "0.5"))
+GUN_PUMP_TIME: float = float(os.getenv("GUN_PUMP_TIME", "0.5"))
+GUN_SHOOT_TIME: float = float(os.getenv("GUN_SHOOT_TIME", "0.1"))
+
+CAMERA_RESOLUTION: Tuple[int, int] = (640, 480)
+CAMERA_FOV_H = 62
+CAMERA_FOV_V = 48
+CAMERA_CENTER: Tuple[float, float] = (CAMERA_RESOLUTION[0] // 2, CAMERA_RESOLUTION[1] // 2)
+
 PROJECT_ROOT: str = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR: str = os.path.join(PROJECT_ROOT, "data")
 MODEL_PATH: str = os.path.join(PROJECT_ROOT, "models", "model.tflite")
 
-# Logging / operation
-DEFAULT_LOG_LEVEL: str = "INFO"
+DEFAULT_LOG_LEVEL: str = os.getenv("DEFAULT_LOG_LEVEL", "INFO")
 
 __all__ = [
-
+    "Mode",
+    "State",
+    "MODE",
+    "PIR_PIN",
+    "LED_R_PIN",
+    "LED_G_PIN",
+    "LED_B_PIN",
+    "SWITCH_ONE_PIN",
+    "SWITCH_TWO_PIN",
+    "BUTTON_ONE_PIN",
+    "BUTTON_TWO_PIN",
+    "JOYSTICK_VRX_PIN",
+    "JOYSTICK_VRY_PIN",
+    "JOYSTICK_SW_PIN",
+    "LCD_D4_PIN",
+    "LCD_D5_PIN",
+    "LCD_D6_PIN",
+    "LCD_D7_PIN",
+    "LCD_E_PIN",
+    "LCD_RS_PIN",
+    "GUN_PUMP_PIN",
+    "GUN_SHOOT_PIN",
+    "YAW_SERVO_PIN",
+    "PITCH_SERVO_PIN",
+    "SERVO_WAIT_TIME",
+    "GUN_PUMP_TIME",
+    "GUN_SHOOT_TIME",
+    "CAMERA_RESOLUTION",
+    "CAMERA_FOV_H",
+    "CAMERA_FOV_V",
+    "CAMERA_CENTER",
+    "PROJECT_ROOT",
+    "DATA_DIR",
+    "MODEL_PATH",
+    "DEFAULT_LOG_LEVEL",
 ]
