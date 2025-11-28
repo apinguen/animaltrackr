@@ -67,3 +67,15 @@ python src/main.py --help 2>/dev/null || true
 4. Tail logs with `journalctl -u animaltrackr -f`.
 
 Edit the `WorkingDirectory`, `ExecStart`, and `User` fields inside `systemd/animaltrackr.service` if your install path differs from `/home/pi/animaltrackr`.
+
+## Diagnostics / Test Modes
+
+Use the LCD + joystick/buttons to navigate to **Calibration → Diagnostics**. Each entry maps to a runtime mode that exercises hardware:
+
+- **LED Test** cycles RGB combinations so you can confirm wiring.
+- **Servo Test** sweeps yaw and pitch continuously.
+- **Pump Test** fires the pump/valve every 10 seconds (have water ready!).
+- **Sensor Test** lights the LED based on PIR/back/confirm inputs and logs joystick readings.
+- **Camera Test** captures periodic stills into `data/` and logs the file path.
+
+Switch back to any other mode via the menu once you are done validating a component.

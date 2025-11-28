@@ -51,6 +51,14 @@ class modeMenuOptions(Enum):
     PICTURE_FIRE = 4
 
 
+class calibrationMenuOptions(Enum):
+    LED_TEST = 0
+    SERVO_TEST = 1
+    PUMP_TEST = 2
+    SENSOR_TEST = 3
+    CAMERA_TEST = 4
+
+
 class Menu():
     def __init__(self):
         self.state = MenuStates.MAIN
@@ -128,12 +136,40 @@ class Menu():
                     self.state = MenuStates.MAIN
                     self.line = 0
             case MenuStates.CALIBRATION:
-                # To be implemented
-                self.message[0] = "Calibration"
-                self.message[1] = "To be implemented"
-                if action == InputActions.BACK:
+                if action == InputActions.CONFIRM:
+                    if self.line == 0:
+                        self.mode = const.Mode.LED_TEST
+                    elif self.line == 1:
+                        self.mode = const.Mode.SERVO_TEST
+                    elif self.line == 2:
+                        self.mode = const.Mode.PUMP_TEST
+                    elif self.line == 3:
+                        self.mode = const.Mode.SENSOR_TEST
+                    elif self.line == 4:
+                        self.mode = const.Mode.CAMERA_TEST
+                elif action == InputActions.BACK:
                     self.state = MenuStates.MAIN
                     self.line = 0
+                elif action == InputActions.UP and self.line > 0:
+                    self.line -= 1
+                elif action == InputActions.DOWN and self.line < len(calibrationMenuOptions) - 1:
+                    self.line += 1
+
+                if self.line == 0:
+                    self.message[0] = "Diagnostics"
+                    self.message[1] = "> LED Test"
+                elif self.line == 1:
+                    self.message[0] = "Diagnostics"
+                    self.message[1] = "> Servo Test"
+                elif self.line == 2:
+                    self.message[0] = "Diagnostics"
+                    self.message[1] = "> Pump Test"
+                elif self.line == 3:
+                    self.message[0] = "Diagnostics"
+                    self.message[1] = "> Sensor Test"
+                elif self.line == 4:
+                    self.message[0] = "Diagnostics"
+                    self.message[1] = "> Camera Test"
     def getMessage(self) -> list[str]:
         return self.message
     

@@ -23,6 +23,11 @@ class Mode(Enum):
     PICTURE = auto()
     TURRET = auto()
     PICTURE_FIRE = auto()
+    LED_TEST = auto()
+    SERVO_TEST = auto()
+    PUMP_TEST = auto()
+    SENSOR_TEST = auto()
+    CAMERA_TEST = auto()
 
 class State(Enum):
     IDLE = auto()
@@ -86,12 +91,6 @@ __all__ = [
     "JOYSTICK_VRX_PIN",
     "JOYSTICK_VRY_PIN",
     "JOYSTICK_SW_PIN",
-    "LCD_D4_PIN",
-    "LCD_D5_PIN",
-    "LCD_D6_PIN",
-    "LCD_D7_PIN",
-    "LCD_E_PIN",
-    "LCD_RS_PIN",
     "GUN_PUMP_PIN",
     "GUN_SHOOT_PIN",
     "YAW_SERVO_PIN",

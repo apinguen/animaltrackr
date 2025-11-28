@@ -10,9 +10,13 @@ from __future__ import annotations
 import atexit
 import logging
 import time
-from typing import Callable, List, Tuple
+from typing import Callable, Dict, List, Tuple
 from menu import InputActions
-from LCD import LCD
+
+try:
+    from LCD import LCD
+except ImportError:  # pragma: no cover - optional dependency
+    LCD = None  # type: ignore
 
 import constants as const
 
@@ -38,7 +42,14 @@ class Hardware:
         self._configured = False
         self.backButtonPressed = False
         self.confirmButtonPressed = False
-        self.lcd = LCD(2, 0x27, True)
+        if LCD is not None:
+            try:
+                self.lcd = LCD(2, 0x27, True)
+            except Exception:  # pragma: no cover - hardware specific init
+                logging.exception("Unable to initialise LCD; continuing without display")
+                self.lcd = None
+        else:
+            self.lcd = None
         self.lastMessage = ["", ""]
         atexit.register(self.cleanup)
 
@@ -52,6 +63,7 @@ class Hardware:
 
         if self._gpio is None:
             logging.warning("GPIO library not available; running hardware in dry-run mode.")
+            self._configured = True
             return
 
         logging.info("Setting up GPIO pins using BOARD numbering")
@@ -173,20 +185,24 @@ class Hardware:
         self._gpio.output(const.LED_G_PIN, self._gpio.HIGH if g else self._gpio.LOW)
         self._gpio.output(const.LED_B_PIN, self._gpio.HIGH if b else self._gpio.LOW)
     
-    def display_message(self, lines: []) -> None:
+    def display_message(self, lines: List[str] | Tuple[str, str]) -> None:
         """Display a message on the LCD screen."""
 
+        display_lines = list(lines)
+        if len(display_lines) < 2:
+            display_lines += [""] * (2 - len(display_lines))
+
         if self.lcd is None:
-            logging.info("LCD display (dry-run): %s | %s", lines[0], lines[1])
+            logging.info("LCD display (dry-run): %s | %s", display_lines[0], display_lines[1])
             return
 
-        if lines == self.lastMessage:
+        if display_lines == self.lastMessage:
             return  # No change
-        
-        self.lastMessage = lines
+
+        self.lastMessage = display_lines
         self.lcd.clear()
-        self.lcd.message(lines[0], 1)
-        self.lcd.message(lines[1], 2)
+        self.lcd.message(display_lines[0], 1)
+        self.lcd.message(display_lines[1], 2)
     
     def getInput(self) -> InputActions:
         """Check the state of the buttons and return an InputActions value."""
@@ -209,6 +225,28 @@ class Hardware:
                 actions = InputActions.RIGHT
         
         return actions
+
+    def snapshot_inputs(self) -> Dict[str, float | bool]:
+        """Return a snapshot of key input states for diagnostics."""
+
+        if self._gpio is None:
+            return {
+                "pir": False,
+                "back": self.backButtonPressed,
+                "confirm": self.confirmButtonPressed,
+                "joystick_x": 0.0,
+                "joystick_y": 0.0,
+            }
+
+        snapshot = {
+            "pir": bool(self._gpio.input(const.PIR_PIN)),
+            "back": bool(self._gpio.input(const.BACK_BUTTON_PIN)),
+            "confirm": bool(self._gpio.input(const.CONFIRM_BUTTON_PIN)),
+        }
+        x_dir, y_dir = self.getJoystickDirection(tolerance=0.5)
+        snapshot["joystick_x"] = x_dir
+        snapshot["joystick_y"] = y_dir
+        return snapshot
     # Actuators
     
 

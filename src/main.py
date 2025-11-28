@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 import signal
 import time
-from typing import Any, Tuple
+from typing import Any, Dict, Tuple
 
 import constants as const
 from camera import Camera
@@ -37,6 +37,21 @@ class Application:
         self._current_pitch = 90.0
         self._sweep_direction = 1
         self._next_sweep_time = 0.0
+        self._led_cycle = [
+            ((True, False, False), "RED"),
+            ((False, True, False), "GREEN"),
+            ((False, False, True), "BLUE"),
+            ((True, True, True), "WHITE"),
+            ((False, False, False), "OFF"),
+        ]
+        self._led_cycle_index = 0
+        self._next_led_cycle = 0.0
+        self._pitch_direction = 1
+        self._next_pitch_step = 0.0
+        self._next_pump_test = 0.0
+        self._next_sensor_report = 0.0
+        self._last_sensor_snapshot: Dict[str, float | bool] | None = None
+        self._next_camera_test = 0.0
         self.hw.when_motion(self._on_motion)
 
     def run(self) -> None:
@@ -71,6 +86,16 @@ class Application:
                 self._tick_turret()
             case const.Mode.PICTURE_FIRE:
                 self._tick_picture_fire()
+            case const.Mode.LED_TEST:
+                self._tick_led_test()
+            case const.Mode.SERVO_TEST:
+                self._tick_servo_test()
+            case const.Mode.PUMP_TEST:
+                self._tick_pump_test()
+            case const.Mode.SENSOR_TEST:
+                self._tick_sensor_test()
+            case const.Mode.CAMERA_TEST:
+                self._tick_camera_test()
 
     def _tick_tuning(self) -> None:
         logging.debug("TUNING mode idle tick")
@@ -124,6 +149,7 @@ class Application:
         if new_lines != self._menu_lines:
             self._menu_lines = new_lines
             logging.debug("Menu: %s | %s", new_lines[0], new_lines[1])
+            self.hw.display_message(list(new_lines))
         if self.menu.getMode() != previous_mode:
             self.mode = self.menu.getMode()
             logging.info("Mode switched to %s", self.mode.name)
@@ -191,6 +217,72 @@ class Application:
             self._current_pitch = pitch
             self.hw.set_servo_angle("pitch", self._current_pitch)
         self._idle_wait(const.SERVO_WAIT_TIME)
+
+    # ------------------------------------------------------------------
+    # Diagnostic / calibration helpers
+    def _tick_led_test(self) -> None:
+        now = time.time()
+        if now >= self._next_led_cycle:
+            color, label = self._led_cycle[self._led_cycle_index]
+            self.hw.set_led(*color)
+            logging.info("LED test: %s", label)
+            self._led_cycle_index = (self._led_cycle_index + 1) % len(self._led_cycle)
+            self._next_led_cycle = now + 0.75
+        self._idle_wait(0.05)
+
+    def _tick_servo_test(self) -> None:
+        self._sweep_yaw()
+        now = time.time()
+        if now >= self._next_pitch_step:
+            self._current_pitch += self._pitch_direction * 4
+            if self._current_pitch >= 150:
+                self._current_pitch = 150
+                self._pitch_direction = -1
+            elif self._current_pitch <= 30:
+                self._current_pitch = 30
+                self._pitch_direction = 1
+            self.hw.set_servo_angle("pitch", self._current_pitch)
+            logging.info("Servo test: yaw=%.1f pitch=%.1f", self._current_yaw, self._current_pitch)
+            self._next_pitch_step = now + 0.25
+        self._idle_wait(0.05)
+
+    def _tick_pump_test(self) -> None:
+        self.hw.set_led(r=True, b=True)
+        now = time.time()
+        if now >= self._next_pump_test:
+            logging.info("Pump test: firing water gun")
+            self.hw.trigger_gun()
+            self._next_pump_test = now + 10
+        self._idle_wait(0.25)
+
+    def _tick_sensor_test(self) -> None:
+        snapshot = self.hw.snapshot_inputs()
+        now = time.time()
+        if self._last_sensor_snapshot != snapshot and now >= self._next_sensor_report:
+            logging.info("Sensor test snapshot: %s", snapshot)
+            self._last_sensor_snapshot = snapshot
+            self._next_sensor_report = now + 0.5
+
+        if snapshot.get("pir"):
+            self.hw.set_led(r=True)
+        elif snapshot.get("confirm"):
+            self.hw.set_led(g=True)
+        elif snapshot.get("back"):
+            self.hw.set_led(b=True)
+        else:
+            self.hw.set_led()
+        self._idle_wait(0.1)
+
+    def _tick_camera_test(self) -> None:
+        now = time.time()
+        if now >= self._next_camera_test:
+            try:
+                path = self.camera.capture_photo(f"camera-test-{int(now)}.jpg")
+                logging.info("Camera test captured %s", path)
+            except Exception:
+                logging.exception("Camera test capture failed")
+            self._next_camera_test = now + 10
+        self._idle_wait(0.25)
 
     def stop(self) -> None:
         self._running = False
