@@ -52,6 +52,7 @@ class Application:
         self._next_sensor_report = 0.0
         self._last_sensor_snapshot: Dict[str, float | bool] | None = None
         self._next_camera_test = 0.0
+        self._status_led: str | None = None
         self.hw.when_motion(self._on_motion)
 
     def run(self) -> None:
@@ -68,10 +69,15 @@ class Application:
 
     # ------------------------------------------------------------------
     def _setup(self) -> None:
-        self.hw.setup()
-        self.camera.start()
-        self.hw.set_servo_angle("yaw", self._current_yaw)
-        self.hw.set_servo_angle("pitch", self._current_pitch)
+        try:
+            self.hw.setup()
+            self.camera.start()
+            self.hw.set_servo_angle("yaw", self._current_yaw)
+            self.hw.set_servo_angle("pitch", self._current_pitch)
+        except Exception:
+            self._set_status_led("error")
+            raise
+        self._set_status_led("idle" if self.hw.has_real_gpio else "error")
 
     def _tick(self) -> None:
         self._update_menu()
@@ -175,14 +181,35 @@ class Application:
         frame = self._capture_frame_for_analysis()
         yaw, pitch = self._resolve_target_angles(frame)
         self._set_turret_angles(yaw=yaw, pitch=pitch)
+
+        shooting_error = False
         if shoot:
-            self.hw.trigger_gun()
-        if capture:
+            self._set_status_led("shooting")
             try:
-                path = self.camera.capture_photo()
-                logging.info("Captured image %s", path)
+                self.hw.trigger_gun()
             except Exception:
-                logging.exception("Failed to capture photo")
+                shooting_error = True
+                self._set_status_led("error")
+                logging.exception("Failed to fire water gun")
+
+        if capture and not shooting_error:
+            self._capture_photo_with_feedback()
+        elif not shoot and not capture and self._status_led != "error":
+            self._set_status_led("idle")
+
+    def _capture_photo_with_feedback(self, filename: str | None = None) -> None:
+        self._set_status_led("capture")
+        self.hw.set_ir_led(True)
+        try:
+            path = self.camera.capture_photo(filename)
+            logging.info("Captured image %s", path)
+        except Exception:
+            self._set_status_led("error")
+            logging.exception("Failed to capture photo")
+        finally:
+            self.hw.set_ir_led(False)
+            if self._status_led != "error":
+                self._set_status_led("idle")
 
     def _capture_frame_for_analysis(self) -> Any | None:
         try:
@@ -217,6 +244,24 @@ class Application:
             self._current_pitch = pitch
             self.hw.set_servo_angle("pitch", self._current_pitch)
         self._idle_wait(const.SERVO_WAIT_TIME)
+
+    def _set_status_led(self, status: str) -> None:
+        if status == self._status_led:
+            return
+        if status == "idle" and not self.hw.has_real_gpio:
+            status = "error"
+        self._status_led = status
+        match status:
+            case "error":
+                self.hw.set_led(r=True)
+            case "shooting":
+                self.hw.set_led(r=True, g=True)     # yellow
+            case "capture":
+                self.hw.set_led(g=True)
+            case "idle":
+                self.hw.set_led(b=True)
+            case _:
+                self.hw.set_led()
 
     # ------------------------------------------------------------------
     # Diagnostic / calibration helpers

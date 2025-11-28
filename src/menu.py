@@ -19,24 +19,22 @@ class InputActions(Enum):
     BACK = auto()
 
 '''
-">" = hovered selection
-
-Menu layout
+Menu layout (">" marks the current selection)
 
 Main Menu:
-1/3 Mode
-2/3 Settings
-3/3 Calibration
+  1/3 Mode
+  2/3 Settings
+  3/3 Calibration
 
-Modes:
-Tuning
-Default
-Picture
-Turret
-Picture & Fire
+Mode submenu:
+  Tuning
+  Default
+  Picture
+  Turret
+  Picture & Fire
 
-Settings:
-
+Calibration submenu:
+  LED Test, Servo Test, Pump Test, Sensor Test, Camera Test
 '''
 class mainMenuOptions(Enum):
     MODE = 0

@@ -42,6 +42,8 @@ LED_R_PIN: int = _env_int("LED_R_PIN", 15)
 LED_G_PIN: int = _env_int("LED_G_PIN", 16)
 LED_B_PIN: int = _env_int("LED_B_PIN", 18)
 
+IR_LED_PIN: int = _env_int("IR_LED_PIN", 12)
+
 SWITCH_ONE_PIN: int = _env_int("SWITCH_ONE_PIN", 29)
 SWITCH_TWO_PIN: int = _env_int("SWITCH_TWO_PIN", 31)
 
@@ -84,6 +86,7 @@ __all__ = [
     "LED_R_PIN",
     "LED_G_PIN",
     "LED_B_PIN",
+    "IR_LED_PIN",
     "SWITCH_ONE_PIN",
     "SWITCH_TWO_PIN",
     "CONFIRM_BUTTON_PIN",

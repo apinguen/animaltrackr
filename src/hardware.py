@@ -113,7 +113,13 @@ class Hardware:
             bouncetime=200,
         )
 
+        self._gpio.setup(const.IR_LED_PIN, self._gpio.OUT, initial=self._gpio.LOW)
+
         self._configured = True
+
+    @property
+    def has_real_gpio(self) -> bool:
+        return self._gpio is not None
 
     def cleanup(self) -> None:
         """Release hardware resources."""
@@ -238,7 +244,7 @@ class Hardware:
                 "joystick_y": 0.0,
             }
 
-        snapshot = {
+        snapshot: Dict[str, float | bool] = {
             "pir": bool(self._gpio.input(const.PIR_PIN)),
             "back": bool(self._gpio.input(const.BACK_BUTTON_PIN)),
             "confirm": bool(self._gpio.input(const.CONFIRM_BUTTON_PIN)),
@@ -294,6 +300,17 @@ class Hardware:
         time.sleep(shoot_time)
         self._gpio.output(const.GUN_SHOOT_PIN, self._gpio.LOW)
         self._gpio.output(const.GUN_PUMP_PIN, self._gpio.LOW)
+
+    def set_ir_led(self, enabled: bool) -> None:
+        if self._ir_led_state == enabled:
+            return
+        self._ir_led_state = enabled
+        if self._gpio is None:
+            logging.info("IR LED %s (dry-run)", "ON" if enabled else "OFF")
+            return
+        level = self._gpio.HIGH if enabled else self._gpio.LOW
+        self._gpio.output(const.IR_LED_PIN, level)
+        logging.debug("IR LED -> %s", "ON" if enabled else "OFF")
 
 
 __all__ = ["Hardware"]
