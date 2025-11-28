@@ -10,9 +10,12 @@ from __future__ import annotations
 import atexit
 import logging
 import time
-from typing import Callable, List
+from typing import Callable, List, Tuple
+from menu import InputActions
+from LCD import LCD
 
 import constants as const
+
 
 try:
     import RPi.GPIO as GPIO  # type: ignore
@@ -33,6 +36,10 @@ class Hardware:
         self._kit = None
         self._pir_callbacks: List[Callable[[], None]] = []
         self._configured = False
+        self.backButtonPressed = False
+        self.confirmButtonPressed = False
+        self.lcd = LCD(2, 0x27, True)
+        self.lastMessage = ["", ""]
         atexit.register(self.cleanup)
 
     # ---------------------------------------------------------------------
@@ -57,6 +64,7 @@ class Hardware:
             self._gpio.setup(pin, self._gpio.OUT, initial=self._gpio.LOW)
 
         self._gpio.setup(const.PIR_PIN, self._gpio.IN)
+
         self._gpio.setup(const.YAW_SERVO_PIN, self._gpio.OUT)
         self._gpio.setup(const.PITCH_SERVO_PIN, self._gpio.OUT)
 
@@ -75,6 +83,23 @@ class Hardware:
                 self._kit = None
         else:
             logging.info("ServoKit not installed; defaulting to GPIO PWM for servos")
+        
+        self._gpio.setup(const.BACK_BUTTON_PIN, self._gpio.IN, pull_up_down=self._gpio.PUD_DOWN)
+        self._gpio.setup(const.CONFIRM_BUTTON_PIN, self._gpio.IN, pull_up_down=self._gpio.PUD_DOWN)
+
+        self._gpio.add_event_detect(
+            const.BACK_BUTTON_PIN,
+            self._gpio.RISING,
+            callback=lambda channel: self.backButtonCallback(channel),
+            bouncetime=200,
+        )
+
+        self._gpio.add_event_detect(
+            const.CONFIRM_BUTTON_PIN,
+            self._gpio.RISING,
+            callback=lambda channel: self.confirmButtonCallback(channel),
+            bouncetime=200,
+        )
 
         self._configured = True
 
@@ -102,9 +127,41 @@ class Hardware:
                 callback()
             except Exception:  # pragma: no cover - defensive programming
                 logging.exception("PIR callback raised an exception")
+    
+    # ------------------------------------------------------------------
+    # Button events
+    def backButtonCallback(self, channel: int) -> None:
+        self.backButtonPressed = True
+
+    def confirmButtonCallback(self, channel: int) -> None:
+        self.confirmButtonPressed = True
+
+    def getJoystickDirection(self, tolerance: float) -> Tuple[float, float]:
+        """Check the state of the joystick and return its (x, y) direction."""
+
+        if self._gpio is None:
+            logging.info("Joystick read (dry-run); returning (0.0, 0.0)")
+            return (0.0, 0.0)
+
+        x_val = self._gpio.input(const.JOYSTICK_VRX_PIN)
+        y_val = self._gpio.input(const.JOYSTICK_VRY_PIN)
+
+        x_dir = 0.0
+        y_dir = 0.0
+
+        if x_val > tolerance:
+            x_dir = 1.0
+        elif x_val < -tolerance:
+            x_dir = -1.0
+
+        if y_val > tolerance:
+            y_dir = 1.0
+        elif y_val < -tolerance:
+            y_dir = -1.0
+
+        return (x_dir, y_dir)
 
     # ------------------------------------------------------------------
-    # Actuators
     def set_led(self, r: bool = False, g: bool = False, b: bool = False) -> None:
         """Control the RGB LED."""
 
@@ -115,6 +172,45 @@ class Hardware:
         self._gpio.output(const.LED_R_PIN, self._gpio.HIGH if r else self._gpio.LOW)
         self._gpio.output(const.LED_G_PIN, self._gpio.HIGH if g else self._gpio.LOW)
         self._gpio.output(const.LED_B_PIN, self._gpio.HIGH if b else self._gpio.LOW)
+    
+    def display_message(self, lines: []) -> None:
+        """Display a message on the LCD screen."""
+
+        if self.lcd is None:
+            logging.info("LCD display (dry-run): %s | %s", lines[0], lines[1])
+            return
+
+        if lines == self.lastMessage:
+            return  # No change
+        
+        self.lastMessage = lines
+        self.lcd.clear()
+        self.lcd.message(lines[0], 1)
+        self.lcd.message(lines[1], 2)
+    
+    def getInput(self) -> InputActions:
+        """Check the state of the buttons and return an InputActions value."""
+        actions = InputActions.NONE
+        if self.backButtonPressed:
+            actions = InputActions.BACK
+            self.backButtonPressed = False
+        elif self.confirmButtonPressed:
+            actions = InputActions.CONFIRM
+            self.confirmButtonPressed = False
+        elif self._gpio is not None:
+            x_dir, y_dir = self.getJoystickDirection(tolerance=0.5)
+            if y_dir > 0:
+                actions = InputActions.UP
+            elif y_dir < 0:
+                actions = InputActions.DOWN
+            elif x_dir < 0:
+                actions = InputActions.LEFT
+            elif x_dir > 0:
+                actions = InputActions.RIGHT
+        
+        return actions
+    # Actuators
+    
 
     def set_servo_angle(self, channel: str, angle: float) -> None:
         """Move the yaw or pitch servo to the requested angle."""

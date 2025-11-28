@@ -40,19 +40,15 @@ LED_B_PIN: int = _env_int("LED_B_PIN", 18)
 SWITCH_ONE_PIN: int = _env_int("SWITCH_ONE_PIN", 29)
 SWITCH_TWO_PIN: int = _env_int("SWITCH_TWO_PIN", 31)
 
-BUTTON_ONE_PIN: int = _env_int("BUTTON_ONE_PIN", 32)
-BUTTON_TWO_PIN: int = _env_int("BUTTON_TWO_PIN", 33)
+CONFIRM_BUTTON_PIN: int = _env_int("CONFIRM_BUTTON_PIN", 32)
+BACK_BUTTON_PIN: int = _env_int("BACK_BUTTON_PIN", 33)
 
 JOYSTICK_VRX_PIN: int = _env_int("JOYSTICK_VRX_PIN", 36)
 JOYSTICK_VRY_PIN: int = _env_int("JOYSTICK_VRY_PIN", 37)
 JOYSTICK_SW_PIN: int = _env_int("JOYSTICK_SW_PIN", 38)
 
-LCD_D4_PIN: int = _env_int("LCD_D4_PIN", 22)
-LCD_D5_PIN: int = _env_int("LCD_D5_PIN", 23)
-LCD_D6_PIN: int = _env_int("LCD_D6_PIN", 24)
-LCD_D7_PIN: int = _env_int("LCD_D7_PIN", 25)
-LCD_E_PIN: int = _env_int("LCD_E_PIN", 26)
-LCD_RS_PIN: int = _env_int("LCD_RS_PIN", 27)
+LCD_SDA_PIN: int = _env_int("LCD_SDA_PIN", 3)
+LCD_SCL_PIN: int = _env_int("LCD_SCL_PIN", 5)
 
 GUN_PUMP_PIN: int = _env_int("GUN_PUMP_PIN", 35)
 GUN_SHOOT_PIN: int = _env_int("GUN_SHOOT_PIN", 40)
@@ -85,8 +81,8 @@ __all__ = [
     "LED_B_PIN",
     "SWITCH_ONE_PIN",
     "SWITCH_TWO_PIN",
-    "BUTTON_ONE_PIN",
-    "BUTTON_TWO_PIN",
+    "CONFIRM_BUTTON_PIN",
+    "BACK_BUTTON_PIN",
     "JOYSTICK_VRX_PIN",
     "JOYSTICK_VRY_PIN",
     "JOYSTICK_SW_PIN",

@@ -1,5 +1,8 @@
 Resources for using hardware/Pi stuff in general
 
+Button
+https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+
 LED
 https://www.instructables.com/Raspberry-Pi-Tutorial-How-to-Use-a-RGB-LED/
 https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-with-your-raspberry-pis-gpio-pins
