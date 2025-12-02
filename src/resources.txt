@@ -1,5 +1,7 @@
 Resources for using hardware/Pi stuff in general
 
+https://www.etechnophiles.com/raspberry-pi-zero-gpio-pinout-specifications-programming-language/
+
 Button
 https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
 
@@ -10,17 +12,21 @@ https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-wit
 Servo
 https://www.learnrobotics.org/blog/raspberry-pi-servo-motor/
 
+
 Buttons/Switches
 https://projects-raspberry.com/how-to-set-up-buttons-and-switches-on-the-raspberry-pi/
 
 Joystick
 https://newbiely.com/tutorials/raspberry-pi/raspberry-pi-joystick
+https://docs.sunfounder.com/projects/umsk/en/latest/05_raspberry_pi/pi_lesson09_joystick.html
 
 PIR Motion Sensor
 https://randomnerdtutorials.com/raspberry-pi-detect-motion-pir-python/
 
 LCD
 https://docs.sunfounder.com/projects/umsk/en/latest/05_raspberry_pi/pi_lesson26_lcd.html
+https://regentelectronics.com/raspberry-pi/how-to-enable-i2c-on-raspberry-pi-zero-2w-and-use-an-oled-display-ssd1306
+https://forums.raspberrypi.com/viewtopic.php?t=371267
 
 Stuff to install
 python3 -m pip install gpiozero
