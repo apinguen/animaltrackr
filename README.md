@@ -18,3 +18,11 @@ Onshape Link: https://cad.onshape.com/documents/f6ea7a198ba9f9fc6b63369a/w/d75fd
 <img width="1153" height="1005" alt="Screenshot 2025-11-27 202241" src="https://github.com/user-attachments/assets/1f4e7bf8-b2fe-4139-9541-b29f66b8db34" />
 <img width="970" height="994" alt="Screenshot 2025-11-27 202254" src="https://github.com/user-attachments/assets/e0b3d8ea-29c7-47c4-b0e4-42ca9ddf7bdd" />
 <img width="922" height="913" alt="Screenshot 2025-11-27 202307" src="https://github.com/user-attachments/assets/65e3bc72-d17e-429b-98ca-8789922ba48e" />
+<img width="993" height="742" alt="image" src="https://github.com/user-attachments/assets/ba846cbd-fcce-4c38-bf30-b421e995c19d" />
+<img width="982" height="641" alt="image" src="https://github.com/user-attachments/assets/3981705e-320c-4a7e-bbc5-36be42764b92" />
+<img width="784" height="737" alt="image" src="https://github.com/user-attachments/assets/808b98d0-2cb8-4be3-8225-d1df619d46a2" />
+<img width="1369" height="780" alt="image" src="https://github.com/user-attachments/assets/361141db-f065-4dd5-8331-4df029042263" />
+
+
+
+<img width="1312" height="1125" alt="image" src="https://github.com/user-attachments/assets/628f56be-bbbc-4e52-8217-757ef474ac5f" />
